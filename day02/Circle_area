@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+import math
+import tkinter as tk
+from tkinter import messagebox
+
+
+def validate_radius(new_text: str) -> bool:
+    """Allow empty string during typing and digits otherwise."""
+    return new_text.isdigit() or new_text == ""
+
+
+def calculate_area() -> None:
+    value = radius_var.get().strip()
+    if not value:
+        messagebox.showerror("Missing radius", "Please enter the radius as a positive integer.")
+        return
+
+    radius = int(value)
+    if radius <= 0:
+        messagebox.showerror("Invalid radius", "The radius must be greater than zero.")
+        return
+
+    area = math.pi * radius * radius
+    result_var.set(f"Area: {area:.2f}")
+
+
+root = tk.Tk()
+root.title("Circle Area Calculator")
+
+main_frame = tk.Frame(root, padx=12, pady=12)
+main_frame.pack()
+
+radius_var = tk.StringVar()
+result_var = tk.StringVar(value="Area: —")
+
+radius_label = tk.Label(main_frame, text="Radius (positive integer):")
+radius_label.grid(row=0, column=0, sticky="w")
+
+validation_cmd = root.register(validate_radius)
+radius_entry = tk.Entry(
+    main_frame,
+    textvariable=radius_var,
+    validate="key",
+    validatecommand=(validation_cmd, "%P"),
+    width=20,
+)
+radius_entry.grid(row=1, column=0, pady=(0, 8), sticky="we")
+radius_entry.focus()
+
+calculate_button = tk.Button(main_frame, text="Calculate Area", command=calculate_area)
+calculate_button.grid(row=2, column=0, pady=(0, 8), sticky="we")
+
+result_label = tk.Label(main_frame, textvariable=result_var)
+result_label.grid(row=3, column=0, sticky="w")
+
+root.mainloop()
