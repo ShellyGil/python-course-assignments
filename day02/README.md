@@ -1,5 +1,6 @@
 Prompts For PCR_Calculator
 AI tool: ChatGPT 5
+[github flavoured markdown](https://github.github.com/gfm/)
 
 Prompts:
 
