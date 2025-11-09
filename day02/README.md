@@ -1,8 +1,9 @@
-Prompts For PCR_Calculator
-AI tool: ChatGPT 5
-[github flavoured markdown](https://github.github.com/gfm/)
+# Prompts For PCR_Calculator
 
-Prompts:
+* AI tool: ChatGPT 5
+* Purpose of script: calculate PCR solution amounts easily by only specifying amount of overall samples.
+
+## Prompts:
 
 1. I want an easy GUI calculator for genotyping that calculates the
 amounts I need to prepare (of DDW, mix, and primers) according to
