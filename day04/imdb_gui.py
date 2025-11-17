@@ -8,7 +8,7 @@ is done in imdb_data.py (business logic).
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 import random
-import webbrowser   # <-- Needed for YouTube trailer links
+import webbrowser   # For YouTube trailer links
 
 from imdb_data import (
     fetch_and_save_imdb_movies,
@@ -173,12 +173,15 @@ class MovieRecommenderApp:
 
     def fetch_from_imdb(self):
         try:
+            # Use full dataset (no max_movies limit) so year filters work properly
             self.movies = fetch_and_save_imdb_movies(
-                output_path="data/imdb_movies.csv",
-                max_movies=5000
+                output_path="data/imdb_movies.csv"
             )
             self.update_genre_list()
-            messagebox.showinfo("IMDb", "Data downloaded and saved successfully!")
+            messagebox.showinfo(
+                "IMDb",
+                f"Data downloaded and saved successfully! Total movies: {len(self.movies)}"
+            )
         except Exception as e:
             messagebox.showerror("Error", f"Failed to fetch IMDb data:\n{e}")
 
@@ -192,7 +195,10 @@ class MovieRecommenderApp:
         try:
             self.movies = load_movies_from_csv(path)
             self.update_genre_list()
-            messagebox.showinfo("Loaded", "CSV loaded successfully.")
+            messagebox.showinfo(
+                "Loaded",
+                f"CSV loaded successfully. Movies found: {len(self.movies)}"
+            )
         except Exception as e:
             messagebox.showerror("Error", f"Failed to load CSV:\n{e}")
 
@@ -211,12 +217,22 @@ class MovieRecommenderApp:
     # ---------------- FILTERING ----------------
 
     def parse_int(self, value):
+        value = value.strip()
+        if not value:
+            return None
         try:
-            return int(value.strip())
-        except:
+            return int(value)
+        except ValueError:
             return None
 
     def filter_current(self):
+        if not self.movies:
+            messagebox.showwarning(
+                "No data",
+                "Please fetch from IMDb or load a CSV first."
+            )
+            return []
+
         genre = self.genre_var.get()
         if genre == "(Any genre)":
             genre = None
@@ -305,7 +321,6 @@ class MovieRecommenderApp:
                 font=("Arial", 13)
             ).pack(anchor="w", padx=8, pady=(0, 6))
 
-            # ---- YOUTUBE TRAILER BUTTON ----
             tk.Button(
                 card,
                 text="Watch trailer on YouTube",

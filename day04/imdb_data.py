@@ -28,13 +28,14 @@ IMDB_RATINGS_URL = "https://datasets.imdbws.com/title.ratings.tsv.gz"
 
 def fetch_and_save_imdb_movies(
     output_path="data/imdb_movies.csv",
-    max_movies=5000
+    max_movies=None,
 ):
     """
     Download IMDb basics + ratings, merge them, and save to a local CSV.
 
     :param output_path: Where to save the processed CSV file.
-    :param max_movies:  Limit number of movies to keep the file manageable.
+    :param max_movies:  Optional limit on number of movies.
+                        If None, use the full dataset (recommended).
     :return: List of movie dicts with keys: Title, Genre, IMDB_Rating, Runtime, Year
     """
     # Make sure output directory exists
@@ -88,7 +89,8 @@ def fetch_and_save_imdb_movies(
                 # rating will be filled from ratings file
             }
 
-            if len(movies_by_id) >= max_movies:
+            # Only limit if max_movies was given
+            if max_movies is not None and len(movies_by_id) >= max_movies:
                 break
 
     # ----- Download ratings -----
