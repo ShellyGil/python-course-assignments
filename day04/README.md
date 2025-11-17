@@ -147,18 +147,6 @@ No keys, secrets, or emails were required.
 
 ---
 
-## 🧹 Git Hygiene  
-I removed all `__pycache__/` folders and added:
-
-```
-__pycache__/
-*.pyc
-```
-
-to `.gitignore` to ensure Python cache files do not get committed.
-
----
-
 ## 🤝 Interaction With AI (Required by Assignment)
 
 Below is a **clean, summarized list** of the relevant prompts I provided to the AI while developing this project.  
@@ -166,18 +154,18 @@ These are the interactions that directly influenced the design, structure, or co
 
 ### **➤ My prompts to the AI (summarized):**
 
-3. *“I want to create a GUI in Visual Studio (Python) to help choose a movie.”*  
-4. *“The GUI should ask genre, rating, runtime… and output 3 movies.”*  
-5. *“Make the app save results to a text file.”*  
-6. *“Include a feature to regenerate 3 new movie suggestions.”*  
-7. *“The design is not good — improve it and make the text bigger.”*  
-8. *“Fetch data automatically from IMDb instead of using a local CSV.”*  
-9. *“I’m getting SSL certificate errors on Mac — fix it.”*  
-10. *“Add features: history, posters, YouTube trailer links, year filters.”*  
-11. *“Separate business logic from UI to meet assignment requirements.”*  
-12. *“Create imdb_data.py and imdb_gui.py with correct separation.”*  
-13. *“Generate README.md explaining everything.”*  
-14. *“Include my prompts in the README.”*
+1. *“I want to create a GUI in Visual Studio (Python) to help choose a movie.”*  
+2. *“The GUI should ask genre, rating, runtime… and output 3 movies.”*  
+3. *“Make the app save results to a text file.”*  
+4. *“Include a feature to regenerate 3 new movie suggestions.”*  
+5. *“The design is not good — improve it and make the text bigger.”*  
+6. *“Fetch data automatically from IMDb instead of using a local CSV.”*  
+7. *“I’m getting SSL certificate errors on Mac — fix it.”*  
+8. *“Add features: history, posters, YouTube trailer links, year filters.”*  
+9. *“Separate business logic from UI to meet assignment requirements.”*  
+10. *“Create imdb_data.py and imdb_gui.py with correct separation.”*  
+11. *“Generate README.md explaining everything.”*  
+12. *“Include my prompts in the README.”*
 
 ### **➤ How AI helped me:**
 - Designed the project structure  
