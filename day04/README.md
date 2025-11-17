@@ -147,7 +147,7 @@ No keys, secrets, or emails were required.
 
 ---
 
-## 🤝 Interaction With AI (Required by Assignment)
+## 🤝 Interaction With AI
 
 Below is a **clean, summarized list** of the relevant prompts I provided to the AI while developing this project.  
 These are the interactions that directly influenced the design, structure, or code.
