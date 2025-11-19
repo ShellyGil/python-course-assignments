@@ -2,7 +2,7 @@
 *A Python project demonstrating downloading data from a real website, saving it locally,  
 separating business logic from UI, and interacting with the user through a GUI.*
 
-** Instructions on how to run the GUI are on the "How it Works" section.
+**Instructions on how to run the GUI are on the "How it Works" section.**
 
 ---
 
